@@ -45,9 +45,9 @@ from install import commons
 from install import messages
 
 _new_version_url = \
-    "https://github.com/Farseer-NMR/FarSeer-NMR/archive/master.zip"
+    "https://github.com/joaomcteixeira/Tree-of-Life/archive/master.zip"
 _new_version_zip = "master.zip"
-_folder_to_remove = ["Documentation", "gui", "core", "install", ".idea"]
+_folder_to_remove = ["install"]
 
 
 class Updater():
