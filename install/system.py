@@ -45,10 +45,10 @@ installation_folder = os.path.abspath(os.path.join(_file_path, os.pardir))
 
 # about conda env
 miniconda_folder = 'miniconda'
-default_env_file = os.path.join(_file_path, 'template_env.yml')
+latest_env_file = os.path.join(_file_path, 'template_env.yml')
 default_miniconda_folder = os.path.join(os.getcwd(), miniconda_folder)
 
-with open(default_env_file, 'r') as f:
+with open(latest_env_file, 'r') as f:
     for line in f:
         if line.startswith('name:'):
             latest_env_name = line.strip().split()[-1]

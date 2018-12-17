@@ -110,7 +110,7 @@ if install_choice == "1":  # installs Miniconda and Python Environment
     
     miniconda_handler = condamanager.CondaManager(
         cwd=system.installation_folder,
-        env=system.default_env_file
+        env=system.latest_env_file
         )
     
     # returns name of folder, if found.

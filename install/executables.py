@@ -105,8 +105,14 @@ importlib.reload(system)
 
 log.info("* Checking Conda environment...")
 
-env_exec_new = installation_vars.python_exec
-install_option_new = installation_vars.install_option
+install_dir = installation_vars.install_dir,
+python_exec = installation_vars.python_exec,
+install_option = installation_vars.install_option,
+conda_exec = installation_vars.conda_exec,
+env_file = installation_vars.env_file,
+env_name = installation_vars.env_name,
+env_version = installation_vars.env_version,
+miniconda_folder = installation_vars.miniconda_folder
 
 if system.latest_env_version > installation_vars.installed_env_version:
 
@@ -122,13 +128,19 @@ if system.latest_env_version > installation_vars.installed_env_version:
         upc.set_conda_exec(installation_vars.conda_exec)
         upc.set_env_name(installation_vars.installed_env_name)
         upc.remove_env()
-        upc.set_env_file(installation_vars.installed_env_file)
+        upc.set_env_file(system.latest_env_version)
         upc.install_env()
         upc.logs_env_information()
         log.info("... Conda env UPDATED")
         
-        env_exec_new = upc.get_env_python_exec()
-        install_option_new = 1
+        # registers installation variables
+        install_option = 1
+        conda_exec = upc.get_conda_exec()
+        python_exec = upc.get_env_python_exec()
+        env_file = upc.get_env_file()
+        env_name = upc.get_env_name()
+        env_version = upc.get_env_version()
+        miniconda_folder = upc.get_miniconda_install_folder()
     
     elif not(installation_vars.conda_exec) \
             and installation_vars.install_option == 2:
@@ -155,13 +167,14 @@ commons.create_executables(
     )
 
 commons.register_install_vars(
-    installation_vars.install_dir,
-    env_exec=env_exec_new,
-    install_option=install_option_new,
-    conda_exec=installation_vars.conda_exec,
-    env_name=system.latest_env_name,
-    env_version=system.latest_env_version,
-    miniconda_folder=system.miniconda_folder
+    install_dir=install_dir,
+    python_exec=python_exec,
+    install_option=install_option,
+    conda_exec=conda_exec,
+    env_file=env_file,
+    env_name=env_name,
+    env_version=env_version,
+    miniconda_folder=miniconda_folder
     )
 
 log.info(messages.update_completed)
