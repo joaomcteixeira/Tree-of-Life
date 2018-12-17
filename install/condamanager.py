@@ -665,6 +665,11 @@ class CondaManager():
         """
         Removes Miniconda Environment.
         """
+        
+        if self.get_env_name() is None:
+            self.log.debug("no environment to remove... ignoring...")
+            return
+        
         self.log.info("* Removing Miniconda Environment")
         
         exec_line = '{} remove -vy --name {} --all'.format(
