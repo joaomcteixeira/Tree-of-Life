@@ -56,12 +56,17 @@ import os
 import importlib
 from pathlib import Path
 
-software_folder = Path(__file__)
+software_folder = os.path.abspath(
+    os.path.join(
+        os.path.dirname(os.path.realpath(__file__)),
+        os.pardir
+        )
+    )
 
 sys.path.append(software_folder)
 
 if sys.version_info[0] != 3:
-    sys.stderr.write("Python 3 is required to run Farseer-NMR")
+    sys.stderr.write("Python 3 is required to run Updater")
     sys.exit(1)
 
 from install import logger
@@ -73,12 +78,12 @@ except ModuleNotFoundError as e:
     print("* ERROR * install_register.py file not found")
     print("* ERROR * this file has created during installation")
     print("* ERROR * and is required for UPDATING")
-    print("* ERROR * Reinstall Farseer-NMR to repair updating functions")
+    print("* ERROR * Reinstall the SOFTWARE to repair updating functions")
     print(messages.additional_help)
     print(messages.abort)
     sys.exit(1)
 
-update_log = install_register.install_wd.joinpath('update.log')
+update_log = install_register.install_dir.joinpath('update.log')
 
 if update_log.exists():
     update_log.unlink()
@@ -91,7 +96,7 @@ from install import updater
 from install import commons
 from install import condamanager
 
-upf = updater.Updater(install_register.install_wd)
+upf = updater.Updater(install_register.install_dir)
 upf.run()
 
 # reloads the updated version of system lib
@@ -103,7 +108,7 @@ log.info("* Checking Conda environment...")
 env_exec_new = install_register.python_exec
 install_option_new = install_register.install_option
 
-if system.latest_env_version > install_register.farseer_env_version:
+if system.latest_env_version > install_register.installed_env_version:
 
     log.info("* A NEW Python environment version is available")
     log.info("* Software's dependencies must be updated")
@@ -113,9 +118,9 @@ if system.latest_env_version > install_register.farseer_env_version:
         log.info("* Miniconda installation found")
         log.info("   ... starting env update")
         
-        upc = condamanager.CondaManager(cwd=install_register.install_wd)
+        upc = condamanager.CondaManager(cwd=install_register.install_dir)
         upc.set_conda_exec(install_register.conda_exec)
-        upc.set_env_name(install_register.farseer_env_name)
+        upc.set_env_name(install_register.installed_env_name)
         upc.remove_env()
         upc.set_env_file(system.latest_env_file)
         upc.install_env()
@@ -145,12 +150,12 @@ else:
 log.info("* Updating executable files...")
 
 commons.create_executables(
-    install_register.install_wd,
+    install_register.install_dir,
     env_exec_new
     )
 
 commons.register_install_vars(
-    install_register.install_wd,
+    install_register.install_dir,
     env_exec=env_exec_new,
     install_option=install_option_new,
     conda_exec=install_register.conda_exec,
