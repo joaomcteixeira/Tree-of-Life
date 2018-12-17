@@ -37,10 +37,9 @@ libs_folder = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(os.path.join(libs_folder, "install"))
 
 from install import system
-from install import logger
 from install import messages
-from install import commons
-from install import condamanager
+# logging is required before importing the other package libs
+from install import logger
 
 # PROCESS ARGS - performed here to allow logging and py2.7 compatibility
 ap = argparse.ArgumentParser(description=__doc__)
@@ -78,19 +77,16 @@ ap.add_argument(
     )
 
 cmd = ap.parse_args()
-# STARTS LOGGING
 
-logfile_name = os.path.join(cmd.path, 'Tree-of-Life.log')
+# STARTS LOGGING
+logfile_name = os.path.join(cmd.path, 'treeoflife_install.log')
 
 if os.path.exists(logfile_name):
     os.remove(logfile_name)
 
 log = logger.InstallLogger(__name__, log_file_name=logfile_name).gen_logger()
-log.debug("Tree-of-Life installation initiated")
-log.debug("<installation_folder>: {}".format(cmd.path))
 
 # CONFIRMS PYTHON VERSION
-
 python_version = sys.version_info[0]
 log.debug("* Python version: {}".format(python_version))
 
@@ -114,8 +110,13 @@ if cmd.path.find(" ") > 0:
     log.info(messages.abort)
     commons.sys_exit()
 
-# STARTS INSTALLATION
+# continues importing log dependent libs
+from install import commons
+from install import condamanager
 
+# STARTS INSTALLATION
+log.debug("Tree-of-Life installation initiated")
+log.debug("<installation_folder>: {}".format(cmd.path))
 log.info(messages.banner)
 log.info(messages.start_install)
 time.sleep(0.5)
@@ -143,7 +144,7 @@ else:
             log.info(messages.additional_help)
             log.info(messages.install_options_full)
     
-    log.debug("final install_choice: {}".format(choice))
+    log.debug("final install_choice: {}".format(install_choice))
     log.info("\n")
 
 time.sleep(0.5)
