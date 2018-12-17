@@ -268,7 +268,7 @@ def sub_call(exec_line):
     return proc
 
 
-def create_executables(installation_folder, env_exec):
+def create_executables(installation_folder, python_exec):
     """
     Creates executables based on user.executables module.
     
@@ -277,7 +277,7 @@ def create_executables(installation_folder, env_exec):
         - installation_folder (str): the software installation folder,
             where the 'bin' folder will reside
         
-        - env_exec (str): the full path for the python executable
+        - python_exec (str): the full path for the python executable
     """
     
     log.info(messages.gen_files_msg_head)
@@ -290,7 +290,7 @@ def create_executables(installation_folder, env_exec):
     else:
         log.debug("'bin' folder already existed")
     
-    log.debug("<env_exec>: {}".format(env_exec))
+    log.debug("<python_exec>: {}".format(env_exec))
     
     for exec_name, code in executables.executable_files.items():
         
@@ -299,7 +299,7 @@ def create_executables(installation_folder, env_exec):
         fout = open(exec_file, 'w')
         log.debug("opened {}".format(exec_file))
         
-        fout.write(code.format(env_exec))
+        fout.write(code.format(python_exec))
         fout.close()
         
         change_permissions_777(exec_file)
@@ -311,7 +311,7 @@ def create_executables(installation_folder, env_exec):
 
 def register_install_vars(
         install_dir,
-        env_exec=None,
+        python_exec=None,
         install_option=None,
         conda_exec=None,
         env_file=None,
@@ -352,9 +352,9 @@ installed_env_version = {}
         install_option,
         install_dir,
         "Path(r'{}')".format(conda_exec) if conda_exec else None,
-        "Path(r'{}')".format(env_file) if env_file else None,
-        "Path(r'{}')".format(env_exec) if env_exec else None,
+        "Path(r'{}')".format(python_exec) if python_exec else None,
         "Path(r'{}')".format(miniconda_folder) if miniconda_folder else None,
+        "Path(r'{}')".format(env_file) if env_file else None,
         "'{}'".format(env_name) if env_name else None,
         env_version
         )
