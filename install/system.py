@@ -44,8 +44,9 @@ installation_folder = os.path.abspath(os.path.join(_file_path, os.pardir))
 
 
 # about conda env
+miniconda_folder = 'miniconda'
 default_env_file = os.path.join(_file_path, 'template_env.yml')
-default_miniconda_folder = os.path.join(os.getcwd(), 'miniconda')
+default_miniconda_folder = os.path.join(os.getcwd(), miniconda_folder)
 
 with open(default_env_file, 'r') as f:
     for line in f:
