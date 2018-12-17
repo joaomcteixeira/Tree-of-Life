@@ -322,14 +322,14 @@ def register_install_vars(
     Writes installation variables to .py file.
     """
     
-    install_reg_name = os.path.join(install_dir, 'install_register.py')
+    install_reg_name = os.path.join(install_dir, 'installation_vars.py')
     
     fout = open(install_reg_name, 'w')
     log.debug("install_reg.py openned: {}".format(install_reg_name))
     
-    install_register = """
+    installation_vars = """
 # This file registers the installation variables
-# which are required for update purposes.
+# which are required for debugging and updating purposes.
 #
 # Please do not delete it from the installation folder
 #
@@ -356,9 +356,9 @@ installed_env_version = {}
         env_version
         )
     
-    log.debug(install_register)
+    log.debug(installation_vars)
     
-    fout.write(install_register)
+    fout.write(installation_vars)
     fout.close()
     log.debug("install_reg created")
     

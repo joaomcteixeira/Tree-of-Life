@@ -208,14 +208,8 @@ if install_choice == "1":  # installs Miniconda and Python Environment
         commons.sys_exit()
     
     # Queries user to agree with Anaconda Terms and Conditions
-    log.info(
-        messages.install_miniconda_terms_and_conditions.format(
-            os.path.join(
-                cmd.path,
-                system.miniconda_folder
-                )
-            )
-        )
+    mf = os.path.abspath(os.path.join(cmd.path, system.miniconda_folder))
+    log.info(messages.install_miniconda_terms_and_conditions.format(mf))
     choice = 1
     approve = system.approve + [""]
     
