@@ -6,7 +6,7 @@ __pycache__/
 # projects
 miniconda/
 bin/
-install_register.py
+installation_vars.py
 
 # C extensions
 *.so
