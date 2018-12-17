@@ -122,7 +122,7 @@ if system.latest_env_version > installation_vars.installed_env_version:
         upc.set_conda_exec(installation_vars.conda_exec)
         upc.set_env_name(installation_vars.installed_env_name)
         upc.remove_env()
-        upc.set_env_file(system.latest_env_file)
+        upc.set_env_file(installation_vars.installed_env_file)
         upc.install_env()
         upc.logs_env_information()
         log.info("... Conda env UPDATED")
