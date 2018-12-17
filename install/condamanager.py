@@ -293,8 +293,8 @@ class CondaManager():
         
         except TypeError as e:
             self._env_version = None
-            self.log.info(e)
-            self.log.info("<env_version>: None")
+            self.log.debug(e)
+            self.log.debug("<env_version>: None")
             return
         
         except ValueError as e:
@@ -471,7 +471,7 @@ class CondaManager():
         # installs miniconda
         commons.sub_call(exec_line)
         
-        # sets miniconda conda exec file
+        # sets miniconda conda and python exec files
         if system.platform in ("Windows"):
             # https://stackoverflow.com/questions/37117571/where-does-anaconda-python-install-on-windows
             # https://stackoverflow.com/questions/44597662/conda-command-is-not-recognized-on-windows-10
@@ -483,6 +483,13 @@ class CondaManager():
                     'conda.exe'
                     )
                 )
+            
+            self.set_env_python_exec(
+                os.path.join(
+                    self.get_miniconda_install_folder(),
+                    'python.exe'
+                    )
+                )
         
         else:  # UNIX systems
             self.set_conda_exec(
@@ -490,6 +497,14 @@ class CondaManager():
                     self.get_miniconda_install_folder(),
                     'bin',
                     'conda'
+                    )
+                )
+            
+            self.set_env_python_exec(
+                os.path.join(
+                    self.get_miniconda_install_folder(),
+                    'bin',
+                    'python'
                     )
                 )
         
