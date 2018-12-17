@@ -28,7 +28,6 @@ with this library. If not, see <http://www.gnu.org/licenses/>.
 """
 import sys
 import os
-import argparse
 import time  # used to give a more human feeling to the install process
 
 libs_folder = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
@@ -41,45 +40,11 @@ from install import messages
 # logging is required before importing the other package libs
 from install import logger
 
-# PROCESS ARGS - performed here to allow logging and py2.7 compatibility
-ap = argparse.ArgumentParser(description=__doc__)
-
-ap.add_argument(
-    '-p',
-    '--path',
-    help=(
-        "PATH where to install Miniconda. "
-        "Defaults to the current working directory"
-        ),
-    default=os.getcwd()
-    )
-
-ap.add_argument(
-    '-e',
-    '--environment',
-    help=(
-        "Path to Anaconda ENV file. "
-        "Defaults to {}. ".format(system.default_env_file)
-        ),
-    default=system.default_env_file
-    )
-
-ap.add_argument(
-    '--no-env',
-    help=("Install Mininconda without installing an environment"),
-    action="store_true"
-    )
-
-ap.add_argument(
-    '--no-exec',
-    help="Deactivates the creation of executable files.",
-    action="store_false"
-    )
-
-cmd = ap.parse_args()
-
 # STARTS LOGGING
-logfile_name = os.path.join(cmd.path, 'treeoflife_install.log')
+logfile_name = os.path.join(
+    system.installation_folder,
+    'treeoflife_install.log'
+    )
 
 if os.path.exists(logfile_name):
     os.remove(logfile_name)
@@ -104,8 +69,8 @@ else:
     log.info(messages.abort)
     commons.sys_exit()
 
-if cmd.path.find(" ") > 0:
-    log.info(messages.path_with_spaces.format(cmd.path))
+if system.installation_folder.find(" ") > 0:
+    log.info(messages.path_with_spaces.format(system.installation_folder))
     log.info(messages.additional_help)
     log.info(messages.abort)
     commons.sys_exit()
@@ -116,36 +81,25 @@ from install import condamanager
 
 # STARTS INSTALLATION
 log.debug("Tree-of-Life installation initiated")
-log.debug("<installation_folder>: {}".format(cmd.path))
+log.debug("<installation_folder>: {}".format(system.installation_folder))
 log.info(messages.banner)
 log.info(messages.start_install)
 time.sleep(0.5)
 
-did_user_specified_env = bool(cmd.environment != system.default_env_file) \
-    or cmd.no_env
+log.info(messages.install_header)
+log.info(messages.install_options_full)
 
-if cmd.no_env:
-    cmd.environment = None
+# Queries installation option
+install_choice = None
+while install_choice not in ("1", "2", "3"):
+    install_choice = user_input(messages.query)
+    log.debug("install_choice: {}".format(install_choice))
+    if install_choice == "4":
+        log.info(messages.additional_help)
+        log.info(messages.install_options_full)
 
-if did_user_specified_env:
-    # assumes user wants to install Miniconda
-    install_choice = "1"
-
-else:
-    log.info(messages.install_header)
-    log.info(messages.install_options_full)
-    
-    # Queries installation option
-    install_choice = None
-    while install_choice not in ("1", "2", "3"):
-        install_choice = user_input(messages.query)
-        log.debug("install_choice: {}".format(install_choice))
-        if install_choice == "4":
-            log.info(messages.additional_help)
-            log.info(messages.install_options_full)
-    
-    log.debug("final install_choice: {}".format(install_choice))
-    log.info("\n")
+log.debug("final install_choice: {}".format(install_choice))
+log.info("\n")
 
 time.sleep(0.5)
 
@@ -155,8 +109,8 @@ if install_choice == "1":  # installs Miniconda and Python Environment
     log.debug("entered install option 1")
     
     miniconda_handler = condamanager.CondaManager(
-        cwd=cmd.path,
-        env=cmd.environment
+        cwd=system.installation_folder,
+        env=system.default_env_file
         )
     
     # returns name of folder, if found.
@@ -208,7 +162,7 @@ if install_choice == "1":  # installs Miniconda and Python Environment
         commons.sys_exit()
     
     # Queries user to agree with Anaconda Terms and Conditions
-    mf = os.path.abspath(os.path.join(cmd.path, system.miniconda_folder))
+    mf = os.path.abspath(os.path.join(system.installation_folder, system.miniconda_folder))
     log.info(messages.install_miniconda_terms_and_conditions.format(mf))
     choice = 1
     approve = system.approve + [""]
@@ -274,12 +228,11 @@ else:  # expecting the unexpected
 time.sleep(1)
 
 # creates executable files
-if cmd.no_exec:
-    commons.create_executables(cmd.path, env_exec)
+commons.create_executables(system.installation_folder, env_exec)
 
 # registers installation variables in a file.py
 commons.register_install_vars(
-    install_dir=cmd.path,
+    install_dir=system.installation_folder,
     env_exec=env_exec,
     install_option=install_option,
     conda_exec=conda_exec,
