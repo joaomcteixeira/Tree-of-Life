@@ -283,6 +283,7 @@ commons.register_install_vars(
     env_exec=env_exec,
     install_option=install_option,
     conda_exec=conda_exec,
+    env_file=cmd.environment,
     env_name=env_name,
     env_version=env_version,
     miniconda_folder=miniconda_folder

@@ -314,6 +314,7 @@ def register_install_vars(
         env_exec=None,
         install_option=None,
         conda_exec=None,
+        env_file=None,
         env_name=None,
         env_version=None,
         miniconda_folder=None
@@ -343,6 +344,7 @@ install_dir = Path(r'{}')
 conda_exec = {}
 python_exec = {}
 miniconda_folder = {}
+installed_env_file = {}
 installed_env_name = {}
 installed_env_version = {}
 """.format(
@@ -350,6 +352,7 @@ installed_env_version = {}
         install_option,
         install_dir,
         "Path(r'{}')".format(conda_exec) if conda_exec else None,
+        "Path(r'{}')".format(env_file) if env_file else None,
         "Path(r'{}')".format(env_exec) if env_exec else None,
         "Path(r'{}')".format(miniconda_folder) if miniconda_folder else None,
         "'{}'".format(env_name) if env_name else None,
