@@ -1,5 +1,12 @@
 """
-MINICONDA INSTALLER.
+Tree-of-Life installer.
+
+Allows two install options:
+
+[1]: Installs Minconda and corresponding ENV (if applicable)
+    finally, installs executable files.
+[2]: installs executable files without reference to the required
+    Python environment.
 
 Copyright © 2018-2019 Tree-of-Life
 
@@ -42,34 +49,35 @@ ap.add_argument(
     '-p',
     '--path',
     help=(
-        "PATH where to install miniconda. "
+        "PATH where to install Miniconda. "
         "Defaults to the current working directory"
         ),
     default=os.getcwd()
     )
 
-# Options
 ap.add_argument(
     '-e',
     '--environment',
     help=(
-        "Anaconda ENV file. "
-        "Defaults to {}".format(system.default_env_file)
+        "Path to Anaconda ENV file. "
+        "Defaults to {}. ".format(system.default_env_file)
         ),
     default=system.default_env_file
     )
 
 ap.add_argument(
-    '-x',
-    help=(
-        "Activates the creation of executable files "
-        "using lib install/executables.py"
-        ),
+    '--no-env',
+    help=("Install Mininconda without installing an environment"),
     action="store_true"
     )
 
-cmd = ap.parse_args()
+ap.add_argument(
+    '--no-exec',
+    help="Deactivates the creation of executable files.",
+    action="store_false"
+    )
 
+cmd = ap.parse_args()
 # STARTS LOGGING
 
 logfile_name = os.path.join(cmd.path, 'Tree-of-Life.log')
@@ -78,7 +86,7 @@ if os.path.exists(logfile_name):
     os.remove(logfile_name)
 
 log = logger.InstallLogger(__name__, log_file_name=logfile_name).gen_logger()
-log.debug("Miniconda installation initiated")
+log.debug("Tree-of-Life installation initiated")
 log.debug("<installation_folder>: {}".format(cmd.path))
 
 # CONFIRMS PYTHON VERSION
@@ -95,7 +103,7 @@ elif python_version == 3:
 else:
     log.info(messages.unknown_python)
     log.info("* You are running Python version: {}".format(python_version))
-    log.info("Tree-of-Life requires Python 2.7 or 3.x to execute")
+    log.info("* Tree-of-Life requires Python 2.7 or 3.x to execute")
     log.info(messages.additional_help)
     log.info(messages.abort)
     commons.sys_exit()
@@ -112,24 +120,36 @@ log.info(messages.banner)
 log.info(messages.start_install)
 time.sleep(0.5)
 
-# Queries installation option
-log.info(messages.install_header)
-log.info(messages.install_options_full)
+did_user_specified_env = bool(cmd.environment != system.default_env_file) \
+    or cmd.no_env
 
-choice = None
-while choice not in ("1", "2", "3"):
-    choice = user_input(messages.query)
-    log.debug("install_choice: {}".format(choice))
-    if choice == "4":
-        log.info(messages.additional_help)
-        log.info(messages.install_options_full)
+if cmd.no_env:
+    cmd.environment = None
 
-log.debug("final install_choice: {}".format(choice))
-log.info("\n")
+if did_user_specified_env:
+    # assumes user wants to install Miniconda
+    install_choice = "1"
+
+else:
+    log.info(messages.install_header)
+    log.info(messages.install_options_full)
+    
+    # Queries installation option
+    install_choice = None
+    while install_choice not in ("1", "2", "3"):
+        install_choice = user_input(messages.query)
+        log.debug("install_choice: {}".format(install_choice))
+        if install_choice == "4":
+            log.info(messages.additional_help)
+            log.info(messages.install_options_full)
+    
+    log.debug("final install_choice: {}".format(choice))
+    log.info("\n")
+
 time.sleep(0.5)
 
 # Applies choice
-if choice == "1":  # installs Miniconda and software Environment
+if install_choice == "1":  # installs Miniconda and Python Environment
     
     log.debug("entered install option 1")
     
@@ -180,22 +200,28 @@ if choice == "1":  # installs Miniconda and software Environment
     
     log.info(messages.install_miniconda_proceed)
     
-    if not(commons.check_available_disk_space()):  # requires 3GB minimum
+    if not(commons.check_available_disk_space()):
         log.info(messages.not_enough_space)
         log.info(messages.additional_help)
         log.info(messages.abort)
         commons.sys_exit()
     
     # Queries user to agree with Anaconda Terms and Conditions
-    log.info(messages.install_miniconda_terms_and_conditions)
+    log.info(
+        messages.install_miniconda_terms_and_conditions.format(
+            os.path.join(
+                cmd.path,
+                system.miniconda_folder
+                )
+            )
+        )
     choice = 1
-    while not(choice in system.approve) \
-            and not(choice in system.deny) \
-            and not(choice == ""):
-        
+    approve = system.approve + [""]
+    
+    while choice not in approve and choice not in system.deny:
         choice = user_input(messages.query).upper()
     
-    if choice in system.approve or choice == "":
+    if choice in approve:
         log.info("continuing...")
     
     elif choice in system.deny:
@@ -222,7 +248,7 @@ if choice == "1":  # installs Miniconda and software Environment
     os.remove(miniconda_install_file)
     log.debug("removed: {}".format(miniconda_install_file))
 
-elif choice == "2":  # Manual Python libs installation
+elif install_choice == "2":  # Manual Python libs installation
     
     log.info(messages.manual_install)
     choice = user_input(messages.big_query).upper()
@@ -240,7 +266,7 @@ elif choice == "2":  # Manual Python libs installation
     conda_exec = None
     miniconda_folder = None
 
-elif choice == "3":
+elif install_choice == "3":
     log.info(messages.additional_help)
     log.info(messages.abort)
     commons.sys_exit()
@@ -253,7 +279,7 @@ else:  # expecting the unexpected
 time.sleep(1)
 
 # creates executable files
-if cmd.x:
+if cmd.no_exec:
     commons.create_executables(cmd.path, env_exec)
 
 # registers installation variables in a file.py
