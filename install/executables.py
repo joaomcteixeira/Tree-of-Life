@@ -54,13 +54,9 @@ update_script_code = r"""#! {}
 import sys
 import os
 import importlib
+from pathlib import Path
 
-software_folder = os.path.abspath(
-    os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
-        os.pardir
-        )
-    )
+software_folder = Path(__file__)
 
 sys.path.append(software_folder)
 
