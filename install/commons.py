@@ -343,8 +343,8 @@ install_dir = Path(r'{}')
 conda_exec = {}
 python_exec = {}
 miniconda_folder = {}
-env_name = {}
-env_version = {}
+installed_env_name = {}
+installed_env_version = {}
 """.format(
         messages.mailist,
         install_option,
