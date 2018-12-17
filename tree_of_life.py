@@ -188,6 +188,7 @@ if install_choice == "1":  # installs Miniconda and Python Environment
     install_option = 1
     conda_exec = miniconda_handler.get_conda_exec()
     python_exec = miniconda_handler.get_env_python_exec()
+    env_file = miniconda_handler.get_env_file()
     env_name = miniconda_handler.get_env_name()
     env_version = miniconda_handler.get_env_version()
     miniconda_folder = miniconda_handler.get_miniconda_install_folder()
@@ -210,6 +211,7 @@ elif install_choice == "2":  # Manual Python libs installation
     # registers installation variables
     install_option = 2
     python_exec = sys.executable
+    env_file = None
     env_name = None
     env_version = None
     conda_exec = None
@@ -236,7 +238,7 @@ commons.register_install_vars(
     python_exec=python_exec,
     install_option=install_option,
     conda_exec=conda_exec,
-    env_file=system.default_env_file,
+    env_file=env_file,
     env_name=env_name,
     env_version=env_version,
     miniconda_folder=miniconda_folder

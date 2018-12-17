@@ -290,7 +290,7 @@ def create_executables(installation_folder, python_exec):
     else:
         log.debug("'bin' folder already existed")
     
-    log.debug("<python_exec>: {}".format(env_exec))
+    log.debug("<python_exec>: {}".format(python_exec))
     
     for exec_name, code in executables.executable_files.items():
         
