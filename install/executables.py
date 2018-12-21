@@ -158,13 +158,14 @@ elif install_option == 2:
     log.info(
         "* You have previously configured Python libraries manually.\n"
         "* Please check if it's necessary to update the software's \n"
-        "* Python dependencies, consult .yml file in 'install' folder"
+        "* Python dependencies, consult .yml file in 'install' folder."
         )
     
 else:
     log.info("* ERROR* We couldn't access install information")
     log.info(messages.something_wrong)
     log.info(messages.additional_help)
+    log.info(messages.consider_reinstalling)
     log.info(messages.abort)
     sys.exit(1)
 
