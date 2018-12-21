@@ -109,9 +109,9 @@ install_dir = installation_vars.install_dir,
 python_exec = installation_vars.python_exec,
 install_option = installation_vars.install_option,
 conda_exec = installation_vars.conda_exec,
-env_file = installation_vars.env_file,
-env_name = installation_vars.env_name,
-env_version = installation_vars.env_version,
+env_file = installation_vars.installed_env_file,
+env_name = installation_vars.installed_env_name,
+env_version = installation_vars.installed_env_version,
 miniconda_folder = installation_vars.miniconda_folder
 
 if system.latest_env_version > installation_vars.installed_env_version:
