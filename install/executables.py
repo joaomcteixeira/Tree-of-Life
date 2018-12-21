@@ -93,11 +93,9 @@ try:
     env_name = installation_vars.installed_env_name
     env_version = installation_vars.installed_env_version
     miniconda_folder = installation_vars.miniconda_folder
+
 except AttributeError as e:
-    print("* ERROR *")
-    print("a variable necessary for updating could not be loaded")
-    print("the installation_variables.py file must be damaged")
-    print("* ERROR *")
+    print(messages.update_var_missing)
     print()
     print(messages.consider_reinstall)
     print(messages.additional_help)
@@ -106,7 +104,14 @@ except AttributeError as e:
     input("Press ENTER to TERMINATE")
     sys.exit(1)
 
-update_log = install_dir.joinpath('update.log')
+try:
+    update_log = install_dir.joinpath('update.log')
+except FileNotFoundError as e:
+    print(messages.update_var_missing)
+    print(messages.consider_reinstall)
+    print(e)
+    print("Press ENTER to TERMINATE")
+    sys.exit(1)
 
 if update_log.exists():
     update_log.unlink()

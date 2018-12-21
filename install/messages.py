@@ -201,12 +201,19 @@ manual_install = (
 
 # UPDATER
 
+update_var_missing = _formats_message_body(
+    _formats_short_title("ERROR")
+    + "An installation variable necessary for UPDATING"
+    " is missing or broken in installation_vars.py"
+    )
+
 update_continues = """
 * Despite the ERRORS the update will continue
 """
 
 consider_reinstall = _formats_message_body(
-    "Something went wrong during the updating process. "
+    _formats_short_title("NOTICE")
+    + "Something went wrong during the updating process. "
     "The easiest method to solve this issue is to reinstall "
     "the software."
     )
@@ -318,6 +325,7 @@ if __name__ == "__main__":
     print(reinstall_canceled)
     print(envs_okay)
     print(manual_install)
+    print(update_var_missing)
     print(update_completed)
     print(update_continues)
     print(consider_reinstall)
