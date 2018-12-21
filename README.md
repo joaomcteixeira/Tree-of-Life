@@ -1,10 +1,10 @@
 # Tree-of-Life
 
-**Tree-of-Life** is a _Python-written_ and _stand-alone_ **library** that configures the Python dependencies and the _executable files_ for Python-based and user-oriented projects.
+**Tree-of-Life** is a _Python-written_ and _stand-alone_ **library** that installs the Python dependencies and configures the _executable files_ for Python-based and **user-oriented** projects.
 
 As the name implies, it provides a _tree_ of routines that give _life_ to your project (inside user's computers) `:-)`.
 
-It is designed to serve user-oriented projects, that is, projects that aim at a broad user audience that is not expected to have programming skills. With Tree-of-Life users can easily setup the host project in their computers.
+It is designed to serve _user-oriented projects_, that is, projects that aim at a broad user audience that is not expected to have programming skills. With Tree-of-Life users can easily setup the host project in their computers.
 
 # Vision
 
