@@ -114,7 +114,7 @@ list_of_paths = [
 
 for _path in list_of_paths:
     if not _path.exists():
-        print("'{}' path does NOT exists".format(_path))
+        print( _path + " path does NOT exists")
         print(messages.update_var_missing)
         print()
         print(messages.consider_reinstall)
