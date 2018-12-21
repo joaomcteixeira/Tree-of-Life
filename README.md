@@ -17,12 +17,12 @@ Maintaining these standards can be challenging if one considers the diversity of
 
 ## Aim
 
-Tree-of-Life provides a simple and universal platform that automatically configures the required Python dependencies and executable files for your Python-based project. To setup the software, users should simply type:
+Tree-of-Life is a simple and universal platform that automatically configures the required Python dependencies and executable files for your Python-based project. To setup the software, users should simply type:
 
 ```
 python tree_of_life.py
 ```
 
-Python itself provides a flawless interface between developers and the different OS plarforms, therefore, Tree-of-Life is written fully in Python an is compatible with Python 2.7 and 3.x series. I consider safe to rely on Python because nowadays (year 2018) virtually every computer has Python installed and the above command can be executed straightforward; if that's not the case, installing Python from scratch in the user's computer lies outside this project.
+Python itself provides a flawless interface between developers and the different OS platforms, therefore, Tree-of-Life is written fully in Python an is compatible with Python 2.7 and 3.x series. I consider safe to rely on Python because nowadays (year 2018) virtually every computer has Python installed and the above command can be executed straightforwardly; installing Python from scratch in the user's computer lies outside this project.
 
 Additionally, for the developer to have full control on what takes place during the installation process, the installation protocol (in this case, Tree-of-Life) should be completely independent of the previously installed Python settings, that is, not relying on [PyPI](https://pypi.org/) nor `conda install`.
