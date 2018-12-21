@@ -54,7 +54,6 @@ update_script_code = r"""#! {}
 import sys
 import os
 import importlib
-from pathlib import Path
 
 software_folder = os.path.abspath(
     os.path.join(
@@ -75,6 +74,7 @@ from install import messages
 try:
     import installation_vars
 except ModuleNotFoundError as e:
+    print(e)
     print("* ERROR * installation_vars.py file not found")
     print("* ERROR * this file has created during installation")
     print("* ERROR * and is required for UPDATING")
@@ -118,8 +118,8 @@ if install_option == 1:
 
     if system.latest_env_version > installation_vars.installed_env_version:
 
-    log.info("* A NEW Python environment version is available")
-    log.info("* Software's dependencies must be updated")
+        log.info("* A NEW Python environment version is available")
+        log.info("* Software's dependencies must be updated")
     
         if os.path.exists(installation_vars.conda_exec):
         
@@ -151,8 +151,8 @@ if install_option == 1:
             log.info(messages.update_continues)
             log.info(messages.consider_reinstalling)
     else:
-    log.info("   ...Conda env already in latest version")
-    log.info("")
+        log.info("   ...Conda env already in latest version")
+        log.info("")
 
 elif install_option == 2:
     log.info("* You have previously configured Python libraries mannually")
@@ -170,7 +170,7 @@ log.info("* Updating executable files...")
 
 commons.create_executables(
     installation_vars.install_dir,
-    env_exec_new
+    python_exec
     )
 
 commons.register_install_vars(
