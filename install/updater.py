@@ -47,7 +47,7 @@ from install import messages
 _new_version_url = \
     "https://github.com/joaomcteixeira/Tree-of-Life/archive/master.zip"
 _new_version_zip = "master.zip"
-_folder_to_remove = ["install"]
+_folders_to_remove = ["install"]
 
 
 class Updater():
@@ -69,7 +69,7 @@ class Updater():
             update_log="update.log",
             new_version_url=_new_version_url,
             new_version_zip=_new_version_zip,
-            folders_to_remove=_folder_to_remove
+            folders_to_remove=_folders_to_remove
             ):
         """
         
