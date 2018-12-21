@@ -158,9 +158,9 @@ if install_option == 1:
             install_option = 1
             conda_exec = upc.get_conda_exec()
             python_exec = upc.get_env_python_exec()
-            env_file = upc.get_env_file()
-            env_name = upc.get_env_name()
-            env_version = upc.get_env_version()
+            installed_env_file = upc.get_env_file()
+            installed_env_name = upc.get_env_name()
+            installed_env_version = upc.get_env_version()
             miniconda_folder = upc.get_miniconda_install_folder()
         
         else:
@@ -197,9 +197,9 @@ commons.register_install_vars(
     python_exec=python_exec,
     install_option=install_option,
     conda_exec=conda_exec,
-    env_file=env_file,
-    env_name=env_name,
-    env_version=env_version,
+    env_file=installed_env_file,
+    env_name=installed_env_name,
+    env_version=installed_env_version,
     miniconda_folder=miniconda_folder
     )
 
