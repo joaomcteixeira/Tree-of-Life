@@ -91,7 +91,6 @@ gen_files_msg_tail = _formats_message_body(
 
 _install_perfect = """
 The software installation COMPLETED successfully
-Press ENTER to finish
 """
 
 install_completed = (
