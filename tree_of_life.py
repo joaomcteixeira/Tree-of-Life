@@ -67,13 +67,15 @@ else:
     log.info("* Tree-of-Life requires Python 2.7 or 3.x to execute")
     log.info(messages.additional_help)
     log.info(messages.abort)
-    commons.sys_exit()
+    user_input(messages.terminate)
+    sys.exit(1)
 
 if system.installation_folder.find(" ") > 0:
     log.info(messages.path_with_spaces.format(system.installation_folder))
     log.info(messages.additional_help)
     log.info(messages.abort)
-    commons.sys_exit()
+    user_input(messages.terminate)
+    sys.exit(1)
 
 # continues importing log dependent libs
 from install import commons
@@ -162,7 +164,9 @@ if install_choice == "1":  # installs Miniconda and Python Environment
         commons.sys_exit()
     
     # Queries user to agree with Anaconda Terms and Conditions
-    mf = os.path.abspath(os.path.join(system.installation_folder, system.miniconda_folder))
+    mf = os.path.abspath(
+        os.path.join(system.installation_folder, system.miniconda_folder)
+        )
     log.info(messages.install_miniconda_terms_and_conditions.format(mf))
     choice = 1
     approve = system.approve + [""]
