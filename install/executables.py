@@ -116,7 +116,7 @@ miniconda_folder = installation_vars.miniconda_folder
 
 if install_option == 1:
 
-    if system.latest_env_version > installation_vars.installed_env_version):
+    if system.latest_env_version > installation_vars.installed_env_version:
 
     log.info("* A NEW Python environment version is available")
     log.info("* Software's dependencies must be updated")
