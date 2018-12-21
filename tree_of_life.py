@@ -92,7 +92,7 @@ log.info(messages.install_options_full)
 # Queries installation option
 install_choice = None
 while install_choice not in ("1", "2", "3"):
-    install_choice = user_input(messages.query)
+    install_choice = user_input(messages.query).strip()
     log.debug("install_choice: {}".format(install_choice))
     if install_choice == "4":
         log.info(messages.additional_help)
@@ -131,7 +131,7 @@ if install_choice == "1":  # installs Miniconda and Python Environment
         
         choice = None
         while not(choice in system.approve) and not(choice in system.deny):
-            choice = user_input(messages.query).upper()
+            choice = user_input(messages.query).strip().upper()
             log.debug("<choice>: {}".format(choice))
         
         log.debug("Resinstall option chosen: {}".format(choice))
@@ -168,7 +168,7 @@ if install_choice == "1":  # installs Miniconda and Python Environment
     approve = system.approve + [""]
     
     while choice not in approve and choice not in system.deny:
-        choice = user_input(messages.query).upper()
+        choice = user_input(messages.query).strip().upper()
     
     if choice in approve:
         log.info("continuing...")
@@ -201,7 +201,7 @@ if install_choice == "1":  # installs Miniconda and Python Environment
 elif install_choice == "2":  # Manual Python libs installation
     
     log.info(messages.manual_install)
-    choice = user_input(messages.big_query).upper()
+    choice = user_input(messages.big_query).strip().upper()
     
     if choice in system.deny:
         log.info(messages.additional_help)
@@ -245,4 +245,4 @@ commons.register_install_vars(
     )
 
 log.info(messages.install_completed)
-user_input()
+user_input(messages.terminate)
