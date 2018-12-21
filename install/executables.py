@@ -114,50 +114,57 @@ env_name = installation_vars.installed_env_name,
 env_version = installation_vars.installed_env_version,
 miniconda_folder = installation_vars.miniconda_folder
 
-if system.latest_env_version > installation_vars.installed_env_version:
+if install_option == 1:
+
+    if system.latest_env_version > installation_vars.installed_env_version):
 
     log.info("* A NEW Python environment version is available")
     log.info("* Software's dependencies must be updated")
     
-    if installation_vars.conda_exec and installation_vars.install_option == 1:
-    
-        log.info("* Miniconda installation found")
-        log.info("   ... starting env update")
+        if os.path.exists(installation_vars.conda_exec):
         
-        upc = condamanager.CondaManager(cwd=installation_vars.install_dir)
-        upc.set_conda_exec(installation_vars.conda_exec)
-        upc.set_env_name(installation_vars.installed_env_name)
-        upc.remove_env()
-        upc.set_env_file(system.latest_env_version)
-        upc.install_env()
-        upc.logs_env_information()
-        log.info("... Conda env UPDATED")
+            log.info("* Miniconda installation found")
+            log.info("   ... starting env update")
+            
+            upc = condamanager.CondaManager(cwd=installation_vars.install_dir)
+            upc.set_conda_exec(installation_vars.conda_exec)
+            upc.set_env_name(installation_vars.installed_env_name)
+            upc.remove_env()
+            upc.set_env_file(system.latest_env_version)
+            upc.install_env()
+            upc.logs_env_information()
+            log.info("... Conda env UPDATED")
+            
+            # registers installation variables
+            install_option = 1
+            conda_exec = upc.get_conda_exec()
+            python_exec = upc.get_env_python_exec()
+            env_file = upc.get_env_file()
+            env_name = upc.get_env_name()
+            env_version = upc.get_env_version()
+            miniconda_folder = upc.get_miniconda_install_folder()
         
-        # registers installation variables
-        install_option = 1
-        conda_exec = upc.get_conda_exec()
-        python_exec = upc.get_env_python_exec()
-        env_file = upc.get_env_file()
-        env_name = upc.get_env_name()
-        env_version = upc.get_env_version()
-        miniconda_folder = upc.get_miniconda_install_folder()
-    
-    elif not(installation_vars.conda_exec) \
-            and installation_vars.install_option == 2:
-        log.info("* You have previously configured Python libraries mannually")
-        log.info("* You should update software's Python dependencies")
-        log.info("* consult .yml file in 'install' folder")
-    
+        else:
+            log.info("* ERROR * Could not find the CONDA executable")
+            log.info(messages.something_wrong)
+            log.info(messages.additional_help)
+            log.info(messages.update_continues)
+            log.info(messages.consider_reinstalling)
     else:
-        log.info("* ERROR* We couldn't access install information")
-        log.info(messages.something_wrong)
-        log.info(messages.additional_help)
-        log.info(messages.abort)
-        sys.exit(1)
-    
-else:
     log.info("   ...Conda env already in latest version")
     log.info("")
+
+elif install_option == 2:
+    log.info("* You have previously configured Python libraries mannually")
+    log.info("* You should update software's Python dependencies")
+    log.info("* consult .yml file in 'install' folder")
+    
+else:
+    log.info("* ERROR* We couldn't access install information")
+    log.info(messages.something_wrong)
+    log.info(messages.additional_help)
+    log.info(messages.abort)
+    sys.exit(1)
 
 log.info("* Updating executable files...")
 

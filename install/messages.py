@@ -201,6 +201,15 @@ manual_install = (
 
 # UPDATER
 
+update_continues = """
+* Despite the ERRORS the update will continue
+"""
+
+consider_reinstall = _formats_message_body(
+    "If after updating the software seases to function, "
+    "consider reinstalling it."
+    )
+
 _update_perfect = """
 {} update COMPLETED successfully
 Press ENTER to finish
@@ -309,6 +318,8 @@ if __name__ == "__main__":
     print(envs_okay)
     print(manual_install)
     print(update_completed)
+    print(update_continues)
+    print(consider_reinstall)
     print(additional_help)
     print(not_enough_space)
     print(unknown_python)
