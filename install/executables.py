@@ -81,9 +81,29 @@ except ModuleNotFoundError as e:
     print("* ERROR * Reinstall the SOFTWARE to repair updating functions")
     print(messages.additional_help)
     print(messages.abort)
+    input("Press ENTER to TERMINATE")
     sys.exit(1)
 
-update_log = installation_vars.install_dir.joinpath('update.log')
+try:
+    install_dir = installation_vars.install_dir
+    python_exec = installation_vars.python_exec
+    install_option = installation_vars.install_option
+    conda_exec = installation_vars.conda_exec
+    env_file = installation_vars.installed_env_file
+    env_name = installation_vars.installed_env_name
+    env_version = installation_vars.installed_env_version
+    miniconda_folder = installation_vars.miniconda_folder
+except AttributeError as e:
+    print(e)
+    print("* ERROR * a variable necessary for updating could not be loaded")
+    print("* ERROR * the installation_variables.py file must be damaged")
+    print(messages.consider_reinstalling)
+    print(messages.additional_help)
+    print(messages.abort)
+    input("Press ENTER to TERMINATE")
+    sys.exit(1)
+
+update_log = install_dir.joinpath('update.log')
 
 if update_log.exists():
     update_log.unlink()
@@ -96,7 +116,7 @@ from install import updater
 from install import commons
 from install import condamanager
 
-upf = updater.Updater(installation_vars.install_dir)
+upf = updater.Updater(install_dir)
 upf.run()
 
 # reloads the updated version of system lib
@@ -105,30 +125,21 @@ importlib.reload(system)
 
 log.info("* Checking Conda environment...")
 
-install_dir = installation_vars.install_dir
-python_exec = installation_vars.python_exec
-install_option = installation_vars.install_option
-conda_exec = installation_vars.conda_exec
-env_file = installation_vars.installed_env_file
-env_name = installation_vars.installed_env_name
-env_version = installation_vars.installed_env_version
-miniconda_folder = installation_vars.miniconda_folder
-
 if install_option == 1:
 
-    if system.latest_env_version > installation_vars.installed_env_version:
+    if system.latest_env_version > installed_env_version:
 
         log.info("* A NEW Python environment version is available")
         log.info("* Software's dependencies must be updated")
     
-        if os.path.exists(installation_vars.conda_exec):
+        if os.path.exists(conda_exec):
         
             log.info("* Miniconda installation found")
             log.info("   ... starting env update")
             
-            upc = condamanager.CondaManager(cwd=installation_vars.install_dir)
-            upc.set_conda_exec(installation_vars.conda_exec)
-            upc.set_env_name(installation_vars.installed_env_name)
+            upc = condamanager.CondaManager(cwd=install_dir)
+            upc.set_conda_exec(conda_exec)
+            upc.set_env_name(installed_env_name)
             upc.remove_env()
             upc.set_env_file(system.latest_env_version)
             upc.install_env()
@@ -171,10 +182,7 @@ else:
 
 log.info("* Updating executable files...")
 
-commons.create_executables(
-    installation_vars.install_dir,
-    python_exec
-    )
+commons.create_executables(install_dir, python_exec)
 
 commons.register_install_vars(
     install_dir=install_dir,
