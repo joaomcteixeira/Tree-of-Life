@@ -94,9 +94,11 @@ try:
     env_version = installation_vars.installed_env_version
     miniconda_folder = installation_vars.miniconda_folder
 except AttributeError as e:
-    print("* ERROR * ")
-    print("* ERROR * a variable necessary for updating could not be loaded")
-    print("* ERROR * the installation_variables.py file must be damaged")
+    print("* ERROR *")
+    print("a variable necessary for updating could not be loaded")
+    print("the installation_variables.py file must be damaged")
+    print("* ERROR *")
+    print()
     print(messages.consider_reinstall)
     print(messages.additional_help)
     print(e)
