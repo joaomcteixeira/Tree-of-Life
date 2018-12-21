@@ -26,3 +26,17 @@ python tree_of_life.py
 Python itself provides a flawless interface between developers and the different OS platforms, therefore, Tree-of-Life is written fully in Python an is compatible with Python 2.7 and 3.x series. I consider safe to rely on Python because nowadays (year 2018) virtually every computer has Python installed and the above command can be executed straightforwardly; installing Python from scratch in the user's computer lies outside this project.
 
 Additionally, for the developer to have full control on what takes place during the installation process, the installation protocol (in this case, Tree-of-Life) should be completely independent of the previously installed Python settings, that is, not relying on [PyPI](https://pypi.org/) nor `conda install`.
+
+## User interface
+
+When running the installation script (`tree_of_life.py`) the user will be asked whether the project's Python dependencies should be installed automatically and the project's executable files configured accordingly or if only the executable files should be generated, leaving the user the responsability to install the required dependencies.
+
+## How to implement Tree-of-Life in your projects
+
+For the sake of keeping the README file as short as possible, find in the [Wiki page](https://github.com/joaomcteixeira/Tree-of-Life/wiki) all information on now ot implement Tree-of-Life in you project.
+
+# LICENSE
+
+Tree-of-Life is licensed under [LGPL version 3](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/LICENSE), and you are allowed to modify and use it according to this license terms.
+
+![LGPL](https://www.gnu.org/graphics/lgplv3-with-text-154x68.png)
