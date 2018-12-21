@@ -97,7 +97,7 @@ except AttributeError as e:
     print(e)
     print("* ERROR * a variable necessary for updating could not be loaded")
     print("* ERROR * the installation_variables.py file must be damaged")
-    print(messages.consider_reinstalling)
+    print(messages.consider_reinstall)
     print(messages.additional_help)
     print(messages.abort)
     input("Press ENTER to TERMINATE")
@@ -160,7 +160,7 @@ if install_option == 1:
             log.info(messages.something_wrong)
             log.info(messages.additional_help)
             log.info(messages.update_continues)
-            log.info(messages.consider_reinstalling)
+            log.info(messages.consider_reinstall)
     else:
         log.info("   ...Conda env already in latest version")
         log.info("")
@@ -176,7 +176,7 @@ else:
     log.info("* ERROR* We couldn't access install information")
     log.info(messages.something_wrong)
     log.info(messages.additional_help)
-    log.info(messages.consider_reinstalling)
+    log.info(messages.consider_reinstall)
     log.info(messages.abort)
     sys.exit(1)
 
