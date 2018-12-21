@@ -29,7 +29,7 @@ Python itself provides a flawless interface between developers and the different
 
 Additionally, for the developer to have full control on what takes place during the installation process, the installation protocol (in this case, Tree-of-Life) should be completely independent of the previously installed Python settings, that is, not relying on [PyPI](https://pypi.org/) nor `conda install`.
 
-### the updated
+### the updater
 
 Tree-of-Life provides also a quick updater that can be used by users to maintain their project's installation up to date; for example, with the `master` branch. The UPDATER script is created during the installation.
 
