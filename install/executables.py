@@ -89,9 +89,9 @@ try:
     python_exec = installation_vars.python_exec
     install_option = installation_vars.install_option
     conda_exec = installation_vars.conda_exec
-    env_file = installation_vars.installed_env_file
-    env_name = installation_vars.installed_env_name
-    env_version = installation_vars.installed_env_version
+    installed_env_file = installation_vars.installed_env_file
+    installed_env_name = installation_vars.installed_env_name
+    installed_env_version = installation_vars.installed_env_version
     miniconda_folder = installation_vars.miniconda_folder
 
 except AttributeError as e:
@@ -149,7 +149,7 @@ if install_option == 1:
             upc.set_conda_exec(conda_exec)
             upc.set_env_name(installed_env_name)
             upc.remove_env()
-            upc.set_env_file(system.latest_env_version)
+            upc.set_env_file(system.latest_env_file)
             upc.install_env()
             upc.logs_env_information()
             log.info("... Conda env UPDATED")
