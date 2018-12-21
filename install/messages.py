@@ -297,6 +297,8 @@ abort = """
 *** Aborting installation ***
 """
 
+terminate = "Press ENTER to TERMINATE"
+
 # http://patorjk.com/software/taag/#p=display&h=1&f=Sweet&t=Tree%20of%20Life
 banner = r"""
  ___                                          .-.      ___        .-.            

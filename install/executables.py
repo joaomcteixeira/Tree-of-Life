@@ -81,7 +81,7 @@ except ModuleNotFoundError as e:
     print("* ERROR * Reinstall the SOFTWARE to repair updating functions")
     print(messages.additional_help)
     print(messages.abort)
-    input("Press ENTER to TERMINATE")
+    input(messages.terminate)
     sys.exit(1)
 
 try:
@@ -101,7 +101,7 @@ except AttributeError as e:
     print(messages.additional_help)
     print(e)
     print(messages.abort)
-    input("Press ENTER to TERMINATE")
+    input(messages.terminate)
     sys.exit(1)
 
 try:
@@ -110,7 +110,7 @@ except FileNotFoundError as e:
     print(messages.update_var_missing)
     print(messages.consider_reinstall)
     print(e)
-    print("Press ENTER to TERMINATE")
+    print(messages.terminate)
     sys.exit(1)
 
 if update_log.exists():

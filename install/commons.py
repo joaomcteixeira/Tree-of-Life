@@ -53,7 +53,7 @@ else:
     log.info(messages.something_wrong)
     log.info(messages.additional_help)
     log.info(messages.abort)
-    user_input("Press ENTER to Terminate")
+    user_input(messages.terminate)
     sys.exit(1)
 
 
@@ -369,6 +369,6 @@ installed_env_version = {}
 
 
 def sys_exit(number=1):
-    user_input("Press ENTER to TERMINATE")
+    user_input(messages.terminate)
     sys.exit(number)
     return
