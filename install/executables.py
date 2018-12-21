@@ -155,9 +155,11 @@ if install_option == 1:
         log.info("")
 
 elif install_option == 2:
-    log.info("* You have previously configured Python libraries mannually")
-    log.info("* You should update software's Python dependencies")
-    log.info("* consult .yml file in 'install' folder")
+    log.info(
+        "* You have previously configured Python libraries mannually.\n")
+        "* Please check if it's necessary to update the software's \n"
+        "* Python dependencies, consult .yml file in 'install' folder"
+        )
     
 else:
     log.info("* ERROR* We couldn't access install information")
