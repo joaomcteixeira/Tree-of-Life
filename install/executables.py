@@ -104,14 +104,26 @@ except AttributeError as e:
     input(messages.terminate)
     sys.exit(1)
 
-try:
-    update_log = install_dir.joinpath('update.log')
-except FileNotFoundError as e:
-    print(messages.update_var_missing)
-    print(messages.consider_reinstall)
-    print(e)
-    print(messages.terminate)
-    sys.exit(1)
+list_of_paths = [
+    install_dir,
+    python_exec,
+    conda_exec,
+    miniconda_folder,
+    miniconda_folder
+    ]
+
+for _path in list_of_paths:
+    if not _path.exists():
+        print("'{}' path does NOT exists".format(_path))
+        print(messages.update_var_missing)
+        print()
+        print(messages.consider_reinstall)
+        print(messages.additional_help)
+        print(messages.abort)
+        input(messages.terminate)
+        sys.exit(1)
+
+update_log = install_dir.joinpath('update.log')
 
 if update_log.exists():
     update_log.unlink()
