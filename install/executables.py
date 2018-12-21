@@ -115,8 +115,9 @@ list_of_paths = [
 
 for _path in list_of_paths:
     if isinstance(_path, pathlib.Path) and not _path.exists():
-        print( _path + " path does NOT exists")
         print(messages.update_var_missing)
+        print(os.fspath(_path) + " path does NOT exists")
+        print()
         print()
         print(messages.consider_reinstall)
         print(messages.additional_help)
