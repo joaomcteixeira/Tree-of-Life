@@ -206,8 +206,9 @@ update_continues = """
 """
 
 consider_reinstall = _formats_message_body(
-    "If after updating the software seases to function, "
-    "consider reinstalling it."
+    "Something went wrong during the updating process. "
+    "The easiest method to solve this issue is to reinstall "
+    "the software."
     )
 
 _update_perfect = """
