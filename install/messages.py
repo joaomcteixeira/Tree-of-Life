@@ -201,21 +201,25 @@ manual_install = (
 
 # UPDATER
 
-update_var_missing = _formats_message_body(
-    _formats_short_title("ERROR")
-    + "An installation variable necessary for UPDATING"
-    " is missing or broken in installation_vars.py"
+update_var_missing = (
+    _formats_short_title("error")
+    + _formats_message_body(
+        "An installation variable necessary for UPDATING"
+        " is missing or broken in installation_vars.py"
+        )
     )
 
 update_continues = """
 * Despite the ERRORS the update will continue
 """
 
-consider_reinstall = _formats_message_body(
-    _formats_short_title("NOTICE")
-    + "Something went wrong during the updating process. "
-    "The easiest method to solve this issue is to reinstall "
-    "the software."
+consider_reinstall = (
+    _formats_short_title("notice")
+    + _formats_message_body(
+        "Something went wrong during the updating process. "
+        "The easiest method to solve this issue is to reinstall "
+        "the software."
+        )
     )
 
 _update_perfect = """
