@@ -1,6 +1,6 @@
 # Tree-of-Life
 
-**Tree-of-Life** is a _Python-written_ and _stand-alone_ library that configures Python dependencies for Python-based and user-oriented projects. It also configures the _executable_ files.
+**Tree-of-Life** is a _Python-written_ and _stand-alone_ library that configures the Python dependencies and the _executable files_ for Python-based and user-oriented projects.
 
 ## Identifying the problem
 
