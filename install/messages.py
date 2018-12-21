@@ -119,7 +119,7 @@ install_options_full = """
 
 _auto_install_message = (
     "Miniconda (https://www.anaconda.com/) along with the "
-    "Python dependencies will be installed the folder:\n"
+    "Python dependencies will be installed in the following folder:\n"
     "{}\n"
     "This Miniconda installation will serve ONLY this folder "
     "not interfeering with your system's Python installation.\n"
