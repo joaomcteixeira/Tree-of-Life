@@ -6,7 +6,7 @@
 
 After performing several workshops on [Farseer-NMR](https://github.com/Farseer-NMR/FarSeer-NMR), I found that software installation is one of the crucial bottle necks between users and developers. When asking users to install a software package, there is a clear difference between users with programming skills, regardless of the level, and users without any of these skills. For the later group, simple steps like installing [Anaconda] and configuring a [Python environment] are definitively not straightforward and can hinder users from using the software or even drive them away.
 
-Therefore, when developing software for a community of users that are not expected (nor required) to have any programming skills, it is necessary to keep, as much as possible, the installation process within the most universal standards, and these have been for decades:
+Therefore, when developing software for a community of users that is not expected (nor required) to have any programming skills, it is necessary to keep, as much as possible, the installation process within the most universal standards, and these have been for decades:
 
 1. download
 1. unzip
@@ -15,7 +15,7 @@ Therefore, when developing software for a community of users that are not expect
 
 Maintaining these standards can be challenging if one considers the diversity of computer platforms available - each user has a different computer/OS/configuration.
 
-Additionally, for the developer to have full control on what occurs in the user's system when the _install button_ is pressed, the installation protocol should be completely independent of the previously installed Python settings (in the particular cases of Python based projects).
+Additionally, for the developer to have full control on what takes place during the installation process, the installation protocol (in this case, Tree-of-Life) should be completely independent of the previously installed Python settings.
 
 ## Aim
 
