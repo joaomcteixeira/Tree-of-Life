@@ -54,6 +54,7 @@ update_script_code = r"""#! {}
 import sys
 import os
 import importlib
+import pathlib
 
 software_folder = os.path.abspath(
     os.path.join(
@@ -113,7 +114,7 @@ list_of_paths = [
     ]
 
 for _path in list_of_paths:
-    if not _path.exists():
+    if isinstance(_path, pathlib.Path) and not _path.exists():
         print( _path + " path does NOT exists")
         print(messages.update_var_missing)
         print()
