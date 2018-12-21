@@ -17,6 +17,8 @@ Maintaining these standards can be challenging if one considers the diversity of
 
 ## Aim
 
+### the installer
+
 Tree-of-Life is a simple and universal platform that automatically configures the required Python dependencies and executable files for your Python-based project. To setup the software, users should simply type:
 
 ```
@@ -27,13 +29,22 @@ Python itself provides a flawless interface between developers and the different
 
 Additionally, for the developer to have full control on what takes place during the installation process, the installation protocol (in this case, Tree-of-Life) should be completely independent of the previously installed Python settings, that is, not relying on [PyPI](https://pypi.org/) nor `conda install`.
 
+### the updated
+
+Tree-of-Life provides also a quick updater that can be used by users to maintain their project's installation up to date; for example, with the `master` branch. The UPDATER script is created during the installation.
+
 ## User interface
 
-When running the installation script (`tree_of_life.py`) the user will be asked whether the project's Python dependencies should be installed automatically and the project's executable files configured accordingly or if only the executable files should be generated, leaving the user the responsability to install the required dependencies.
+When running the installation script (`tree_of_life.py`) the user will be prompt with two installation routines: _automatic_ and _manual_. 
+ 
+- The **automatic** (recommended) option will install a [Miniconda](https://conda.io/miniconda.html) distribution in the project's folder with all the required Python libraries, this Miniconda installation will not conflict with the user system's Python installation. Also, the executable files will be configured accordingly.
+- The **manual** installation will create TEMPLATE executable files. The user should manually configure all the required Python libraries as well as the compatibility between the executable files and the Python dependencies, for example via _shebangs_. Users can use the `template_env.yml` file inside the `install` folder as a guide to the required Python dependencies.
+
+The installation process is recorded in a `install.log` file.
 
 ## How to implement Tree-of-Life in your projects
 
-For the sake of keeping the README file as short as possible, find in the [Wiki page](https://github.com/joaomcteixeira/Tree-of-Life/wiki) all information on now ot implement Tree-of-Life in you project.
+If you are a software developer, writing your projects in Python, and you wish to know how to implement Tree-of-Life in your project, find all information in the [Wiki page](https://github.com/joaomcteixeira/Tree-of-Life/wiki).
 
 # LICENSE
 
