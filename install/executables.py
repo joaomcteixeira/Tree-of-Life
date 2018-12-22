@@ -146,7 +146,6 @@ upf.run()
 # reloads the libs updated version
 importlib.reload(system)
 importlib.reload(executables)
-importlib.reload(commons)
 
 log.info("* Checking Conda environment...")
 
