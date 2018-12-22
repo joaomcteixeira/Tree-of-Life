@@ -28,7 +28,7 @@ my_func(
 - **Always** submit a Pull Request from a cloned or forked repository.
 - Pull Requests title should start with a proposal of version change and, if helpful, followed by a short title: `v1.3.12 - corrected bug in updater`
   - follow versioning standards: [_major/visible_ [ _new feature_ [ _bug correction_]]
-  - new version number should be updated in `install/system.py`.
+  - new version number should be updated in the README.md file.
 - Pull Request description should state the added improvements and corrections.
 - Pull Request should close issues whenever applicable.
 
