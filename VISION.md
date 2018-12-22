@@ -12,7 +12,7 @@ The motivation and vision that drives the Tree-of-Life project.
 
 After performing several workshops on [Farseer-NMR](https://github.com/Farseer-NMR/FarSeer-NMR), I found that software installation is a crucial bottle neck between users and developers.
 
-When asking users to install a software package, there is a clear difference between those with programming skills, regardless of the level, and those without any of these skills. For the later group, simple steps such as installing [Anaconda](https://www.anaconda.com/) and configuring a [Python environment](https://conda.io/docs/user-guide/tasks/manage-environments.html) are definitively not straightforward and can hinder users from using the software or even drive them away.
+When asking users to install a software package, there is a clear difference between those with programming skills, regardless of their level, and those without any of these skills. For the later group, simple steps such as installing [Anaconda](https://www.anaconda.com/) and configuring a [Python environment](https://conda.io/docs/user-guide/tasks/manage-environments.html) are definitively not straightforward and can hinder users from using the software or even drive them away.
 
 Therefore, when developing a software for a community of users that is not expected (nor required) to have any programming skills to actually use the software, it is necessary to keep, as much as possible, the installation process within the most universal standards, and these have been for decades:
 
@@ -27,7 +27,7 @@ Maintaining these standards can be challenging if one considers the diversity of
 
 ### the installer
 
-Tree-of-Life is a simple and universal platform that automatically configures the required Python dependencies and executable files for your Python-based project. To setup the software, users should simply type:
+Tree-of-Life is a simple and universal platform that automatically configures the required Python dependencies and executable files for your Python-based project - thus bridging the gap between developers and users. To setup the software (host project), users should simply type:
 
 ```
 python tree_of_life.py
@@ -39,7 +39,7 @@ Python itself provides a flawless interface between developers and the different
 
 ### the updater
 
-Tree-of-Life provides also an updater that can be used by users to maintain their project's installation up to date; for example, with the `master` branch of the main project repository. The UPDATER script is created during the installation.
+Tree-of-Life provides also an independent updater that can be used by users to maintain their project's installation up to date, without requiring Git or performing any other task outside those provided by the project. The UPDATER script is created during the installation.
 
 ## User interface
 
