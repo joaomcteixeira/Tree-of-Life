@@ -12,6 +12,11 @@ It is designed to serve _user-oriented projects_, that is, projects that aim at 
 
 Read [here](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/VISION.md) about the motivation and vision behind Tree-of-Life.
 
+## Projects which have adopted Tree-of-Life
+
+- [Farseer-NMR](https://github.com/Farseer-NMR/FarSeer-NMR)
+- [Tauren-MD](https://github.com/joaomcteixeira/Tauren-MD)
+
 ## How to implement Tree-of-Life in your projects
 
 If you are a software developer with Python-based or Python-dependent projects, and you wish to know how to implement Tree-of-Life in your project, find all information in the [Wiki page](https://github.com/joaomcteixeira/Tree-of-Life/wiki).
