@@ -79,7 +79,7 @@ class Updater():
             - update_log (opt): the name of the log file (df: 'update.log')
             
             - new_version_url (opt): link to new version
-                (df: https://github.com/<archive/master.zip)
+                (df: https://github.com/<archive>/master.zip)
             
             - new_version_zip (opt): ZIP file to temporarily save new version
                 (df: 'master.zip')

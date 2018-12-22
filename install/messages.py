@@ -186,7 +186,8 @@ _manual_install = (
     "which are the Python dependencies for {}.\n".format(system.software_name)
     + "\n"
     "The installer will now generate TEMPLATE executable files. You may "
-    "WISH or NEED to MODIFY the Farseer-NMR executable files according to "
+    "WISH or NEED to MODIFY {}'s".format(system.software_name)
+    + " executable files according to "
     "your system's and Python preferences.\n"
     "If you don't install the required Python libraries and don't correctly "
     "configure the executable files, "

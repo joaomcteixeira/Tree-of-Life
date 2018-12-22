@@ -183,7 +183,7 @@ class CondaManager():
     
     def set_env_file(self, env_file):
         """
-        Sets Miniconda Farseer-NMR environment file.
+        Sets Miniconda environment file for host project.
         
         Parameters:
         
@@ -274,7 +274,7 @@ class CondaManager():
     
     def set_env_python_exec(self, python_exec):
         """
-        Defines Python executable for Farseer-NMR environment.
+        Defines Python executable for host project.
         """
         
         self._env_python_exec = python_exec
@@ -299,7 +299,7 @@ class CondaManager():
         
         except ValueError as e:
             self.log.info(
-                "* ERROR * Farseer-NMR Python environment version"
+                "* ERROR * Python environment version"
                 "should be integer type"
                 )
             self.log.info("* ERROR * env version not set")
@@ -374,7 +374,7 @@ class CondaManager():
     def check_previous_miniconda_folder(self, folder='[M|m]iniconda.*'):
         """
         Checks if a Miniconda related folder exists inside
-        the Farseer-NMR folder. Accepts regex.
+        the host project installation folder. Accepts regex.
         
         Returns folder name, False otherwise.
         """
@@ -637,7 +637,7 @@ class CondaManager():
     
     def add_install_folder_to_site_packages(self):
         """
-        Adds Farseer-NMR directory to Miniconda Farseer-NMR environment.
+        Adds the host project directory to the Miniconda environment.
         """
         
         # https://stackoverflow.com/questions/37006114/anaconda-permanently-include-external-packages-like-in-pythonpath
@@ -657,7 +657,7 @@ class CondaManager():
         result = commons.sub_call(exec_line).decode("utf-8").split('\n')
         
         self.log.debug("\n".join(result))
-        self.log.debug("Farseer-NMR folder added to site-packges")
+        self.log.debug("Host project folder added to site-packges")
     
         return
     

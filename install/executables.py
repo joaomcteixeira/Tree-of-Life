@@ -71,6 +71,7 @@ if sys.version_info[0] != 3:
 
 from install import logger
 from install import messages
+from install import system
 
 try:
     import installation_vars
@@ -125,7 +126,7 @@ for _path in list_of_paths:
         input(messages.terminate)
         sys.exit(1)
 
-update_log = install_dir.joinpath('update.log')
+update_log = install_dir.joinpath(system.update_log_name)
 
 if update_log.exists():
     update_log.unlink()
@@ -142,7 +143,6 @@ upf = updater.Updater(install_dir)
 upf.run()
 
 # reloads the updated version of system lib
-from install import system
 importlib.reload(system)
 
 log.info("* Checking Conda environment...")

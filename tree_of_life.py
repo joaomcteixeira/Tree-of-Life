@@ -1,13 +1,6 @@
 """
 Tree-of-Life installer.
 
-Allows two install options:
-
-[1]: Installs Minconda and corresponding ENV (if applicable)
-    finally, installs executable files.
-[2]: installs executable files without reference to the required
-    Python environment.
-
 Copyright © 2018-2019 Tree-of-Life
 
 Contributors to this file:
@@ -43,7 +36,7 @@ from install import logger
 # STARTS LOGGING
 logfile_name = os.path.join(
     system.installation_folder,
-    'treeoflife_install.log'
+    system.installation_log_name
     )
 
 if os.path.exists(logfile_name):
@@ -64,7 +57,8 @@ elif python_version == 3:
 else:
     log.info(messages.unknown_python)
     log.info("* You are running Python version: {}".format(python_version))
-    log.info("* Tree-of-Life requires Python 2.7 or 3.x to execute")
+    _name = system.software_name
+    log.info("* {} requires Python 2.7 or 3.x to execute".format(_name))
     log.info(messages.additional_help)
     log.info(messages.abort)
     user_input(messages.terminate)
@@ -82,7 +76,7 @@ from install import commons
 from install import condamanager
 
 # STARTS INSTALLATION
-log.debug("Tree-of-Life installation initiated")
+log.debug("{} installation initiated".format(system.software_name))
 log.debug("<installation_folder>: {}".format(system.installation_folder))
 log.info(messages.banner)
 log.info(messages.start_install)
