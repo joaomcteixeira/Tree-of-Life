@@ -1,7 +1,7 @@
 ---
 name: Discussion
 about: Raise a discussion about Tree-of-Life
-title: "[DISCUSSION]"
+title: "[DISCUSSION] WRITE A SHORT TITLE"
 labels: discussion
 assignees: joaomcteixeira
 
