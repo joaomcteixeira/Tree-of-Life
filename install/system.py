@@ -29,6 +29,8 @@ software_version = (1, 0, 0)  # v1.0.0
 min_space_allowed = 3  # min GB required to install your software
 installation_log_name = "tree_of_life_install.log"
 update_log_name = "tree_of_life_update.log"
+_lastest_env_file = "template_env.yml"
+_miniconda_folder = "miniconda"
 
 # about the default installation folder
 _file_path = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
@@ -44,8 +46,8 @@ exec_file_extension = _executable_file_extensions[platform]
 
 # about conda env
 miniconda_folder = 'miniconda'
-latest_env_file = os.path.join(_file_path, 'template_env.yml')
-default_miniconda_folder = os.path.join(os.getcwd(), miniconda_folder)
+latest_env_file = os.path.join(_file_path, _lastest_env_file)
+default_miniconda_folder = os.path.join(installation_folder, _miniconda_folder)
 
 with open(latest_env_file, 'r') as f:
     for line in f:
