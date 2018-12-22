@@ -45,7 +45,6 @@ bits = "x86_64" if (pltfrm.machine().endswith('64')) else "x86"
 exec_file_extension = _executable_file_extensions[platform]
 
 # about conda env
-miniconda_folder = 'miniconda'
 latest_env_file = os.path.join(_file_path, _lastest_env_file)
 default_miniconda_folder = os.path.join(installation_folder, _miniconda_folder)
 
