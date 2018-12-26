@@ -35,8 +35,9 @@ else:
     sys.exit("* ABORTING * You are using a Python '{}', \
 you should use versions 2 or 3.".format(python_version))
 
-from install import system
 from install import logger
+from install import host_project_vars
+from install import system
 from install import messages
 from install import commons
 

@@ -22,15 +22,7 @@ with this library. If not, see <http://www.gnu.org/licenses/>.
 """
 import platform as pltfrm
 import os
-
-# configure accordingly to the host project
-software_name = "TreeOfLife"
-software_version = (1, 0, 0)  # v1.0.0
-min_space_allowed = 3  # min GB required to install your software
-installation_log_name = "tree_of_life_install.log"
-update_log_name = "tree_of_life_update.log"
-_lastest_env_file = "template_env.yml"
-_miniconda_folder = "miniconda"
+from install import host_project_vars
 
 # about the default installation folder
 _file_path = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
@@ -45,8 +37,11 @@ bits = "x86_64" if (pltfrm.machine().endswith('64')) else "x86"
 exec_file_extension = _executable_file_extensions[platform]
 
 # about conda env
-latest_env_file = os.path.join(_file_path, _lastest_env_file)
-default_miniconda_folder = os.path.join(installation_folder, _miniconda_folder)
+latest_env_file = os.path.join(_file_path, host_project_vars.env_file)
+default_miniconda_folder = os.path.join(
+    installation_folder,
+    host_project_varsminiconda_folder
+    )
 
 with open(latest_env_file, 'r') as f:
     for line in f:

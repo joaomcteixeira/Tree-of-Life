@@ -41,13 +41,13 @@ import zipfile
 import time
 
 from install import logger
+from install import host_project_vars
 from install import commons
 from install import messages
 
-_new_version_url = \
-    "https://github.com/joaomcteixeira/Tree-of-Life/archive/master.zip"
-_new_version_zip = "master.zip"
-_folders_to_remove = ["install", ".github"]
+_new_version_url = host_project_vars.new_version_url
+_new_version_zip = host_project_vars.new_version_zip
+_folders_to_remove = host_project_vars.folders_to_remove
 
 
 class Updater():

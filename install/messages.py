@@ -22,12 +22,15 @@ with this library. If not, see <http://www.gnu.org/licenses/>.
 import os
 import textwrap
 
+from install import host_project_vars
 from install import system
 from install import executables
 
 # provide a link and e-mail with further documentation on the install process
-install_wiki = "https://github.com/joaomcteixeira/Tree-of-Life/wiki"
-mailist = "https://github.com/joaomcteixeira/Tree-of-Life/issues"
+install_wiki = host_project_vars.install_wiki
+mailist = host_project_vars.mailist
+software_name = host_project_vars.software_name
+min_space_allowed = host_project_vars.min_space_allowed
 
 # configure textwrapper
 
@@ -173,7 +176,7 @@ envs_okay = "* OK * The Anaconda Environment installed SUCCESSFULLY"
 # MANUAL INSTALL
 
 _manual_install = (
-    "You chose to configure {} manually, ".format(system.software_name)
+    "You chose to configure {} manually, ".format(software_name)
     + "no Python libraries will be installed now.\n"
     "\n"
     "We assume that you are a proficient Python user and "
@@ -183,15 +186,15 @@ _manual_install = (
     "You can check the required Python libraries in the '.yml' env file "
     "inside the 'install' folder. Use this file to create your own "
     "Anaconda environment if you use Anaconda or as a guide to know "
-    "which are the Python dependencies for {}.\n".format(system.software_name)
+    "which are the Python dependencies for {}.\n".format(software_name)
     + "\n"
     "The installer will now generate TEMPLATE executable files. You may "
-    "WISH or NEED to MODIFY {}'s".format(system.software_name)
+    "WISH or NEED to MODIFY {}'s".format(software_name)
     + " executable files according to "
     "your system's and Python preferences.\n"
     "If you don't install the required Python libraries and don't correctly "
     "configure the executable files, "
-    "{} MIGHT NOT WORK.".format(system.software_name)
+    "{} MIGHT NOT WORK.".format(software_name)
     )
 
 manual_install = (
@@ -225,7 +228,7 @@ consider_reinstall = (
 _update_perfect = """
 {} update COMPLETED successfully
 Press ENTER to finish
-""".format(system.software_name)
+""".format(software_name)
 
 update_completed = (
     _formats_main_title("perfect")
@@ -255,7 +258,7 @@ additional_help = (
 not_enough_space = """
 * Not enought space available to install the required Miniconda packages.
 * At lest {} GB are necessary.
-""".format(system.min_space_allowed)
+""".format(min_space_allowed)
 
 unknown_python = """
 * ERROR * We detected a Python version that is not 2 nor 3.

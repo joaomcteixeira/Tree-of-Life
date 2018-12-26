@@ -70,6 +70,7 @@ if sys.version_info[0] != 3:
     sys.exit(1)
 
 from install import logger
+from install import host_project_vars
 from install import messages
 from install import system
 from install import executables
@@ -127,7 +128,7 @@ for _path in list_of_paths:
         input(messages.terminate)
         sys.exit(1)
 
-update_log = install_dir.joinpath(system.update_log_name)
+update_log = install_dir.joinpath(host_project_vars.update_log_name)
 
 if update_log.exists():
     update_log.unlink()
@@ -144,6 +145,7 @@ upf = updater.Updater(install_dir)
 upf.run()
 
 # reloads the libs updated version
+importlib.reload(host_project_vars)
 importlib.reload(system)
 importlib.reload(executables)
 
