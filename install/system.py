@@ -40,7 +40,7 @@ exec_file_extension = _executable_file_extensions[platform]
 latest_env_file = os.path.join(_file_path, host_project_vars.env_file)
 default_miniconda_folder = os.path.join(
     installation_folder,
-    host_project_varsminiconda_folder
+    host_project_vars.miniconda_folder
     )
 
 with open(latest_env_file, 'r') as f:

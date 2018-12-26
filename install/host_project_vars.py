@@ -32,14 +32,14 @@ install_wiki = "https://github.com/joaomcteixeira/Tree-of-Life/wiki"
 mailist = "https://github.com/joaomcteixeira/Tree-of-Life/issues"
 
 # min GB required to install the host project
-# usually depends on the Miniconda ENV 
+# usually depends on the Miniconda ENV
 min_space_allowed = 3
 
 # name of the LOG files
 installation_log_name = "tree_of_life_install.log"
 update_log_name = "tree_of_life_update.log"
 
-# the Miniconda ENV file specific of the host project 
+# the Miniconda ENV file specific of the host project
 env_file = "template_env.yml"
 
 # Miniconda installation folder
