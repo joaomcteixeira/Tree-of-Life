@@ -29,8 +29,10 @@ from install import system
 # finally, shebangs can be used on Windows10
 # allow double click execution
 
+shebang = "#! {}\n"
+
 # define your executable scripts
-exec1_code = r"""#! {}
+exec1_code = r"""
 # write your code here
 
 import os
@@ -39,7 +41,7 @@ print(os.getcwd())
 
 """
 
-exec2_code = r"""#! {}
+exec2_code = r"""
 # write the code of you 2nd exec file
 
 sentense = "Hello World, I am Tree-of-Life!"
@@ -49,8 +51,7 @@ for word in sentense.split():
 
 """
 
-update_script_code = r"""#! {}
-
+update_script_code = r"""
 import sys
 import os
 import importlib

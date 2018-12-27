@@ -300,7 +300,7 @@ def create_executables(installation_folder, python_exec):
         fout = open(exec_file, 'w')
         log.debug("opened {}".format(exec_file))
         
-        fout.write(code.format(python_exec))
+        fout.write(executables.shebang.format(python_exec) + code)
         fout.close()
         
         change_permissions_777(exec_file)
