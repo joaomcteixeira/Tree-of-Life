@@ -79,7 +79,7 @@ from install import condamanager
 # STARTS INSTALLATION
 log.debug("{} installation initiated".format(host_project_vars.software_name))
 log.debug("<installation_folder>: {}".format(system.installation_folder))
-log.info(messages.banner)
+log.info(host_project_vars.banner)
 log.info(messages.start_install)
 time.sleep(0.5)
 
