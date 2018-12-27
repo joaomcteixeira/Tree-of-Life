@@ -1,6 +1,6 @@
 # Tree-of-Life
 
-_version: 1.1.0_
+_version: 1.1.1_
 
 **Tree-of-Life** is a _Python-written_ and _stand-alone_ **library** that installs the Python dependencies and configures the _executable files_ for Python-based and **user-oriented** projects, and keeps them updated.
 
