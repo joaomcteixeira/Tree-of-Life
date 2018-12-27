@@ -27,6 +27,7 @@ import shutil
 import ctypes
 
 from install import logger
+from install import host_project_vars
 from install import system
 from install import messages
 from install import executables
@@ -65,11 +66,11 @@ def check_available_disk_space(min_space=None):
     Parameters:
     
         - min_space (float): the minimum space allowed in GBs.
-            Defaults to system.min_space_allowed
+            Defaults to host_project_vars.min_space_allowed
     
     """
     
-    min_space = min_space or system.min_space_allowed
+    min_space = min_space or host_project_vars.min_space_allowed
     log.debug("<min_space>: {}".format(min_space))
     
     try:
