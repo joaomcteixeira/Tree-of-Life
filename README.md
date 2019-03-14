@@ -1,6 +1,6 @@
 # Tree-of-Life
 
-_version: 1.1.2_
+[![DOI](https://zenodo.org/badge/162114154.svg)](https://zenodo.org/badge/latestdoi/162114154) [![version](https://img.shields.io/static/v1.svg?label=version&message=1.1.2&color=green)](https://zenodo.org/badge/latestdoi/162114154)
 
 **Tree-of-Life** is a _Python-written_ and _stand-alone_ **library** that installs the Python dependencies and configures the _executable files_ for Python-based and **user-oriented** projects, and keeps them updated.
 
