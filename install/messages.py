@@ -329,4 +329,3 @@ if __name__ == "__main__":
     print(url_unknown)
     print(fs_env_failed)
     print(abort)
-    print(banner)
