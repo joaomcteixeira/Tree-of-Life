@@ -1,25 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-Manages Miniconda and ENV installation.
-
-Copyright © 2018-2019 Tree-of-Life
-
-Contributors to this file:
-- João M.C. Teixeira (https://github.com/joaomcteixeira)
-
-Tree-of-Life is free software: you can redistribute it and/or modify
-it under the terms of the LGPL - GNU Lesser General Public License
-as published by the Free Software Foundation, either version 3
-of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-LGPL - GNU Lesser General Public License for more details.
-
-You should have received a copy of the this license along
-with this library. If not, see <http://www.gnu.org/licenses/>.
+Manages Miniconda and Python ENV installation.
 """
+# Copyright © 2018-2019 Tree-of-Life
+# https://github.com/joaomcteixeira/Tree-of-Life
+#
+# Contributors to this file:
+# - João M.C. Teixeira (https://github.com/joaomcteixeira)
+#
+# Tree-of-Life is free software: you can redistribute it and/or modify
+# it under the terms of the LGPL - GNU Lesser General Public License
+# as published by the Free Software Foundation, either version 3
+# of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# LGPL - GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the this license along
+# with this library. If not, see <http://www.gnu.org/licenses/>.
 import sys
 import os
 import re
