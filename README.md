@@ -1,6 +1,6 @@
 # Tree-of-Life
 
-[![DOI](https://zenodo.org/badge/162114154.svg)](https://zenodo.org/badge/latestdoi/162114154) [![version](https://img.shields.io/static/v1.svg?label=version&message=1.1.2&color=green)](https://zenodo.org/badge/latestdoi/162114154)
+[![DOI](https://zenodo.org/badge/162114154.svg)](https://zenodo.org/badge/latestdoi/162114154) [![version](https://img.shields.io/static/v1.svg?label=version&message=1.1.3&color=green)](https://zenodo.org/badge/latestdoi/162114154)
 
 **Tree-of-Life** is a _Python-written_ and _stand-alone_ **library** that installs the Python dependencies, configures the _executable files_ and provides an updating interface for Python-based projects oriented for *non-developer* users. Reducing the task of installation and updating to simple *double-click* operations *(something that was so common in the past but which is becoming rare to find in most Scientific softwares today)*.
 
