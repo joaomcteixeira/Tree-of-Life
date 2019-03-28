@@ -18,7 +18,7 @@ python tree_of_life.py
 
 Tree-of-Life aims to be platform independent, it should run where ever Python can run. Python itself provides a excellent interface between developers and the different OS platforms; therefore, Tree-of-Life is written fully in Python an is compatible with Python 2.7 and 3.x series. I consider safe to rely on Python because nowadays (year 2018) virtually every computer has Python installed and the above command can be executed straightforwardly. Installing Python from scratch in the user's computer lies outside this project.
 
-If you are a developer, you are invited to read the `tree_of_life.py` file to understand its workflow from the developer's point of view.
+If you are a developer, you are invited to read the [tree_of_life.py](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/tree_of_life.py) file to understand its workflow from the developer's point of view.
 
 From the user's point of view, the installation workflow is as follows:
 
@@ -27,11 +27,11 @@ From the user's point of view, the installation workflow is as follows:
         1. checks available disk space
         1. checks if previous Miniconda installation exists
         1. Installs the latest version of Miniconda locally in the projects folder and according to the user's platform
-        1. installs the project's Python ENV as described in the `yml` file inside the `install` folder
+        1. installs the project's Python ENV as described in the `yml` file inside the [install](https://github.com/joaomcteixeira/Tree-of-Life/tree/master/install) folder
     1. If, _manual_ (proficient Python users):
         1. warns the user that he/she must install the required dependencies manually
         1. Does NOT install any Python packages
-1. Creates the executable files following the `executables.py` file
+1. Creates the executable files following the [executables.py](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/install/executables.py) file
     1. _executable_ files are linked to the project's Python dependencies via _shebang_
     1. the _shebang_ is defined in agreement to the first main query:
         1. if Miniconda and the Python ENV were installed automatically, *shebangs* will point to that env
@@ -45,7 +45,7 @@ From the user's point of view, the installation workflow is as follows:
 
 Tree-of-Life provides an _updater_ script to allow the user to keep up to date with the host project's latest version. The _updater_ is part of the executable files and is created during the installation process inside the `bin` folder.
 
-The updater was designed to keep the user's installation up to date with the developers GitHub project. But, by no means it restricts a GitHub repository; by default, the updater simply requires a web link to a ZIP file containing the project. *(for developers)* You can read the _updater_ workflow in the `update_script_code` variable inside `executable.py`.
+The updater was designed to keep the user's installation up to date with the developers GitHub project. But, by no means it restricts a GitHub repository; by default, the updater simply requires a web link to a ZIP file containing the project. *(for developers)* You can read the _updater_ workflow in the `update_script_code` variable inside [executables.py](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/install/executables.py).
 
 From the user's point of view, the update routines are as follow:
 
