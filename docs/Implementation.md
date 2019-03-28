@@ -42,7 +42,7 @@ In the [vision of the project](https://github.com/joaomcteixeira/Tree-of-Life/bl
 
 To accomplish this, Tree-of-Life is designed such that the executable scripts should be coded as raw strings in the `executables.py` file and headed by a formatter sign `#! {}` where the _shebang_ will be inserted. The `executables.py` file reads very easily and provides executable templates for you to configure according to your project needs.
 
-Read more on the executable files [here](https://github.com/joaomcteixeira/Tree-of-Life/wiki/Workflow#the-executable-files). Check the [Farseer-NMR](https://github.com/Farseer-NMR/FarSeer-NMR/blob/master/install/executables.py) and the [Tauren-MD](https://github.com/joaomcteixeira/Tauren-MD/blob/master/install/executables.py) projects for some examples.
+Read more on the executable files [here](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/docs/Workflow.md#the-executable-files). Check the [Farseer-NMR](https://github.com/Farseer-NMR/FarSeer-NMR/blob/master/install/executables.py) and the [Tauren-MD](https://github.com/joaomcteixeira/Tauren-MD/blob/master/install/executables.py) projects for some examples.
 
 ## Thirdly
 
@@ -54,11 +54,11 @@ Feel free to change the main installer name to fit your project requirements. Fo
 
 ### messages.py
 
-The majority of the messages that are displayed during the installation process are organized inside the `messages.py` file. Messages and titles can be formated using the `_formats*` functions. These messages provide a functional template for you to use right away, yet, you can very easily rewrite these messages to properly fit your project.
+The majority of the messages that are displayed during the installation process are organized inside the `messages.py` file. Messages and titles can be formatted using the `_formats*` functions. These messages provide a functional template for you to use right away, yet, you can very easily rewrite these messages to properly fit your project.
 
 ### The Updater script
 
-Also, an **updater** script is provided in the `executables.py`. The updater is ready-to-use as long as the related variables in `host_project_vars.py` are configured according to the host project. Read further [here](https://github.com/joaomcteixeira/Tree-of-Life/wiki/Workflow#updater).
+Also, an **updater** script is provided in the `executables.py`. The updater is ready-to-use as long as the related variables in `host_project_vars.py` are configured according to the host project. Read further [here](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/docs/Workflow.md#updater).
 
 ## License headers
 
