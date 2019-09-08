@@ -27,4 +27,4 @@ Tree-of-Life is licensed under [LGPL version 3](https://github.com/joaomcteixeir
 
 ![LGPL](https://www.gnu.org/graphics/lgplv3-with-text-154x68.png)
 
-![LOGO](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/docs/treeoflife_logo.png)
+![LOGO](https://github.com/joaomcteixeira/Tree-of-Life/blob/master/docs/ToL_diss_logo.png)
